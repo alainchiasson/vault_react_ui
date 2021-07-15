@@ -1,6 +1,8 @@
 # Bulding a new UI
 
-In lerningn react, I was sent to the react js site, I followed the getting started, and also ran the create-react-app. While I was able to runthroug all of these, there were still a few unaswered questions.
+This experiment is to build a UI ( simple ) for an existing rest API backend. In this case, the backend is Vault. 
+While vault does have a UI, it does not lend itself to being redirected behind a proxy. The proxy is needed as a more robust solution 
+for COORS. In this case we have an NGINX acting a rewrite proxy for the Vault API, so all calls are relative to the same end point. 
 
 ## Start with the minimum
 
