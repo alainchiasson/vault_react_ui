@@ -4,13 +4,16 @@ services:
   nginx:
     build: . 
     links:
-      - vault
+      - vault-01
+      - vault-02
     ports:
       - "8080:80"
-  vault:
+  vault-01:
     image: hashicorp/vault:1.7.0
-    image: vault
     command:
       [ vault, server,  -dev, -dev-root-token-id, root , -dev-listen-address=0.0.0.0:8200]
-    ports: 
-      - 8200:8200
+  vault-02:
+    image: hashicorp/vault:1.7.2
+    command:
+      [ vault, server,  -dev, -dev-root-token-id, root , -dev-listen-address=0.0.0.0:8200]
+    

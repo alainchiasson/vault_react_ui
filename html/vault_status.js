@@ -12,6 +12,7 @@ class VaultStatus extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     if (this.state.statusSet) {
       return (
         <div>
@@ -31,7 +32,7 @@ class VaultStatus extends React.Component {
     console.log('getting state');
     console.log('current state = ', this.state);
 
-    fetch('http://localhost:8080/v1/sys/health')
+    fetch(`http://localhost:8080/${this.props.path}/v1/sys/health`)
     .then(res => res.json())
     .then((data) => {
       this.setState({ 
