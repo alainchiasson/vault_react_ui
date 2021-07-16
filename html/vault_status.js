@@ -32,7 +32,7 @@ class VaultStatus extends React.Component {
     console.log('getting state');
     console.log('current state = ', this.state);
 
-    fetch(`http://localhost:8080/${this.props.path}/v1/sys/health`)
+    fetch(`http://localhost:8080/${this.props.pathPrefix}/v1/sys/health`)
     .then(res => res.json())
     .then((data) => {
       this.setState({ 
@@ -53,7 +53,12 @@ class VaultStatus extends React.Component {
 }
 
 // Find all DOM containers, and render Like buttons into them.
-ReactDOM.render(
-  e(VaultStatus),
-  document.getElementById('vault-status')
-);
+document.querySelectorAll('#vault-status')
+  .forEach(domContainer => {
+    // Read the comment ID from a data-* attribute.
+    const pathPrefix = domContainer.dataset.prefix;
+    ReactDOM.render(
+      e(VaultStatus, { pathPrefix: pathPrefix }),
+        domContainer
+    );
+  });
