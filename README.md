@@ -1,31 +1,22 @@
-# Bulding a new UI
+# Multi Vault UI 
 
-This experiment is to build a UI ( simple ) for an existing rest API backend. In this case, the backend is Vault. 
-While vault does have a UI, it does not lend itself to being redirected behind a proxy. The proxy is needed as a more robust solution 
-for COORS. In this case we have an NGINX acting a rewrite proxy for the Vault API, so all calls are relative to the same end point. 
+For testing a multi vault UI. we have the React code and html in a static nginx server. THere is also a configuration for custom paths towards different vault servers.
 
-## Start with the minimum
+This allows for the development of a browser only client, and routing to multiple backend apis without cross site scriptitng issues.
 
-We are starting from the pevious like button example, so we have a simple html page and an nginx server. We need to start using compose - though we could link manually with images - as we will need 2 containers up and running. One for vault and one for nginx.
+# Usage
 
-Initiely the nginx server is setup like the before - it hosts the static site off the server root.
+To start up : 
 
-## Web flow
+docker compose up -d --build
+docker compose ps
+docker compose exec nginx bash
+docker compose exec vault-01 sh
+docker compose exec vault-02 sh
+docker compose stop
+docker compose kill
+docker compose rm
 
-notes: 
+To reload nginx conf: 
 
-browser to Nginx
-browser to vault VIA nginx. ( explain why )
-
-## Now for the componenet
-
-Same as before. 
-
-Add a state - show it. 
-
-Update the state - when and how.
-
-## Todo 
-
-add a second vault server with full rewrite - either prefix URL or prefix path
-
+docker compose exec nginx nginx -s reload
