@@ -15,11 +15,11 @@ services:
       - vault-01
       - vault-02
   vault-01:
-    image: hashicorp/vault:1.7.0
+    image: hashicorp/vault:1.7.3
     command:
       [ vault, server,  -dev, -dev-root-token-id, root , -dev-listen-address=0.0.0.0:8200]
   vault-02:
-    image: hashicorp/vault:1.7.2
+    image: hashicorp/vault:1.7.3
     command:
       [ vault, server,  -dev, -dev-root-token-id, root , -dev-listen-address=0.0.0.0:8200]
     
